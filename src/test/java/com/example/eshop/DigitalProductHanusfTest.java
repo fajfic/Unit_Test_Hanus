@@ -1,14 +1,3 @@
-package com.example.eshop;
-
-import com.example.eshop.product.DigitalProduct;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-
-import java.math.BigDecimal;
-
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 class DigitalProductHanusfTest {
     @Test
     @DisplayName("Should create valid product with all atributes")
@@ -25,5 +14,13 @@ class DigitalProductHanusfTest {
                 () -> assertEquals(description, product.getDescription(), "Description should match"),
                 () -> assertEquals(price, product.getPrice(), "Price should match"),
                 () -> assertEquals(url, product.getDownloadUrl(), "Download url should match"));
+    }
+
+    @Test
+    @DisplayName("Set Download Url")
+    void setDownloadUrlHanusfTest() {
+        DigitalProduct product = new DigitalProduct("Name", "Desc", new BigDecimal("10.00"), "oldurl");
+        product.setDownloadUrl("newurl");
+        assertEquals("newurl", product.getDownloadUrl(), "Download url should be updated");
     }
 }
